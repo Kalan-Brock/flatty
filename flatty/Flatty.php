@@ -21,22 +21,12 @@ class Flatty {
         return $this->result && $this->result !== '';
     }
 
-    public function isArray()
-    {
-        return is_array($this->result);
-    }
-
     public function result()
     {
         if(!$this->result)
-            return '';
+            return false;
 
-        return json_decode($this->result, true);
-    }
-
-    public function json()
-    {
-        return $this->result ? $this->result : '';
+        return $this->result;
     }
 
     public function get()
@@ -48,8 +38,7 @@ class Flatty {
             $this->result = false;
 
         try {
-            $data = json_decode(base64_decode(json_decode(@file_get_contents($this->path.$this->key . '.json'))['value']));
-            $this->result = $data;
+            $this->result = json_decode(@file_get_contents($this->path.$this->key . '.json'), true);
         } catch(\Exception $e)
         {
             $this->result = false;
@@ -59,14 +48,14 @@ class Flatty {
     public function save($value)
     {
         try {
-            $clean_value = json_encode(['value' => base64_encode(json_encode($value)), 'created' => '', 'updated' => '', 'accessed' => '']);
+            $clean_value = json_encode($value);
             $file = $this->path . $this->key . '.json';
 
             if(!file_exists(dirname($file)))
                 mkdir(dirname($file), 0777, true);
 
             file_put_contents($file, $clean_value);
-            $this->get();
+            $this->result = $value;
 
         } catch(\Exception $e) {
             echo('Flatty file write permission error :(');  die();
@@ -76,5 +65,15 @@ class Flatty {
     public function count()
     {
         return count($this->result);
+    }
+
+    public function isArray()
+    {
+        return is_array($this->result);
+    }
+
+    public function json()
+    {
+        return $this->result ? $this->result : '';
     }
 }
