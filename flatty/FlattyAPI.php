@@ -32,7 +32,7 @@ class FlattyAPI extends API {
      */
     protected function example() {
         if ($this->method == 'GET') {
-            return 'Example Endpoint.  Request: '.json_encode($this->request).' Verb: '.json_encode($this->verb).' Args: '.json_encode($this->args);
+            return 'Example Endpoint Request: '.json_encode($this->request).' Verb: '.json_encode($this->verb).' Args: '.json_encode($this->args);
         } else {
             return "Only accepts GET requests";
         }

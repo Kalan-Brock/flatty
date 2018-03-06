@@ -68,7 +68,7 @@ abstract class API {
     }
 
     private function _cleanInputs($data) {
-        $clean_input = Array();
+        $clean_input = array();
         if (is_array($data)) {
             foreach ($data as $k => $v) {
                 $clean_input[$k] = $this->_cleanInputs($v);

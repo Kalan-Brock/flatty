@@ -11,9 +11,8 @@ function __autoload($class)
 
 use Flatty\FlattyAPI;
 
-if (!array_key_exists('HTTP_ORIGIN', $_SERVER)) {
+if (!array_key_exists('HTTP_ORIGIN', $_SERVER))
     $_SERVER['HTTP_ORIGIN'] = $_SERVER['SERVER_NAME'];
-}
 
 try {
     $api = new FlattyAPI($_REQUEST['request'], $_SERVER['HTTP_ORIGIN']);
