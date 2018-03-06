@@ -1,6 +1,7 @@
 <?php
 
-// Flatty API Handler, by Kalan Brock @ The Biggest Nerd
+// Flatty Loader, by Kalan Brock @ The Biggest Nerd
+// We love hacky projects! Give us a shout, I'm probably awake. - kalan@thebiggestnerd.com
 
 function __autoload($class)
 {
@@ -18,7 +19,7 @@ try {
     $api = new FlattyAPI($_REQUEST['request'], $_SERVER['HTTP_ORIGIN']);
     echo $api->processAPI();
 } catch (Exception $e) {
-    echo json_encode(Array('error' => $e->getMessage()));
+    echo json_encode(array('error' => $e->getMessage()));
 }
 
 // yep, that't it :)

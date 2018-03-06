@@ -1,6 +1,7 @@
 <?php
 
 // Flatty Config, by Kalan Brock @ The Biggest Nerd
+// We love hacky projects! Give us a shout, I'm probably awake. - kalan@thebiggestnerd.com
 
 namespace Flatty;
 

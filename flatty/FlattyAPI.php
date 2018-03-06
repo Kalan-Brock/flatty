@@ -1,6 +1,7 @@
 <?php
 
-// Flatty API, by Kalan Brock @ The Biggest Nerd
+// Flatty API Handler, by Kalan Brock @ The Biggest Nerd
+// We love hacky projects! Give us a shout, I'm probably awake. - kalan@thebiggestnerd.com
 
 namespace Flatty;
 
@@ -19,9 +20,11 @@ class FlattyAPI extends API {
             echo 'exists';
         else {
             echo 'does not exist.';
-        }*/
-        // methods for authenticating api keys and such can be implemented here.
-        // keeping it simple for now by just restricting requests origin localhost.
+        }
+        /*
+         *
+         * Still working this part out, probably need to handle $request differently.
+         */
     }
 
     /**
