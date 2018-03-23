@@ -9,5 +9,18 @@
 </head>
 <body>
 
+    <script src="/flatty/js/flatty.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(event) {
+            var db = new flatty();
+
+            db.get("people", "1").then(function(response) {
+                console.log(JSON.parse(response));
+            }, function(error) {
+                console.log(error);
+            });
+
+        });
+    </script>
 </body>
 </html>
