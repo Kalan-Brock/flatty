@@ -5,10 +5,6 @@ var flatty = function () {
 
     };
 
-    base.sayhi = function () {
-      console.log('saying hi');
-    };
-
     base.get = function (table, key) {
 
         return new Promise(function(resolve, reject) {
