@@ -1,7 +1,6 @@
 <?php
 
 // Flatty API Handler, by Kalan Brock @ The Biggest Nerd
-// We love hacky projects! Give us a shout, I'm probably awake. - kalan@thebiggestnerd.com
 
 namespace Flatty;
 
@@ -15,26 +14,26 @@ class FlattyAPI extends API {
 
         $this->config = new FlattyConfig();
         $this->flatty = new Flatty($request);
-
-        /*if($this->flatty->exists())
-            echo 'exists';
-        else {
-            echo 'does not exist.';
-        }
-        /*
-         *
-         * Still working this part out, probably need to handle $request differently.
-         */
     }
 
-    /**
-     * URL:  /flatty/example
-     */
-    protected function example() {
-        if ($this->method == 'GET') {
-            return 'Example Endpoint Request: '.json_encode($this->request).' Verb: '.json_encode($this->verb).' Args: '.json_encode($this->args);
-        } else {
-            return "Only accepts GET requests";
+    public function processAPI()
+    {
+        if(!$this->table || !$this->key)
+            return parent::processAPI();
+
+        switch($this->method) {
+            case 'DELETE':
+            case 'POST':
+
+                break;
+            case 'GET':
+                return $this->_response($this->flatty->result());
+            case 'PUT':
+
+                break;
+            default:
+                parent::_response('Invalid Method', 405);
+                break;
         }
     }
 }
