@@ -16,6 +16,18 @@ class FlattyAPI extends API {
         $this->flatty = new Flatty($request);
     }
 
+    public function latestEntryNumeric()
+    {
+        $d = scandir($this->flatty->path.$this->table, SCANDIR_SORT_DESCENDING);
+
+        return (int)str_replace('.json', '', $d[0]);
+    }
+
+    public function nextEntryNumeric()
+    {
+        return (int)$this->latestEntryNumeric() + 1;
+    }
+
     public function processAPI()
     {
         if(!$this->table || !$this->key)

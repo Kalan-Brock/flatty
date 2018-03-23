@@ -6,7 +6,7 @@ namespace Flatty;
 
 class Flatty {
 
-    protected $path;
+    public $path;
     protected $result;
     protected $key;
 
